@@ -29,4 +29,8 @@ unsigned char* aspire_mao_resize_rgb(int dest_width,
 									 int src_height,
 									 int pixel_bytes);
 
+unsigned char* aspire_mao_rgb_flip_horizontal(unsigned char *rgb, int width, int height, int pixel_bytes);
+
+unsigned char* aspire_mao_rgb_flip_vertical(unsigned char *rgb, int width, int height, int pixel_bytes);
+
 #endif /* resizergb_h */

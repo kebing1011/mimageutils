@@ -78,10 +78,31 @@ unsigned char* aspire_mao_resize_rgb(int dest_width, int dest_height, unsigned c
  */
 unsigned char* aspire_mao_rgb_flip_horizontal(unsigned char *rgb, int width, int height, int pixel_bytes)
 {
-	unsigned char temp[pixel_bytes];
-	memset(temp, 0, pixel_bytes);
+	unsigned char* des_rgb = malloc(width * height * pixel_bytes);
+
+	int pos = 0;
+	for (int i = 0; i < height; ++i) {
+		if (pixel_bytes == 3)
+		{
+			for (int j = width - 1; j >= 0; --j) {
+				int src_pos = i * width * 3 + j * 3;
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+			}
+		}else if(pixel_bytes == 4)
+		{
+			for (int j = width - 1; j >= 0; --j) {
+				int src_pos =  i * width * 4 + j * 4;
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+			}
+		}
+	}
 	
-	return NULL;
+	return des_rgb;
 }
 
 
@@ -98,6 +119,30 @@ unsigned char* aspire_mao_rgb_flip_horizontal(unsigned char *rgb, int width, int
  */
 unsigned char* aspire_mao_rgb_flip_vertical(unsigned char *rgb, int width, int height, int pixel_bytes)
 {
-	return NULL;
+	unsigned char* des_rgb = malloc(width * height * pixel_bytes);
+	
+	int pos = 0;
+	for (int i = height - 1; i >= 0; --i) {
+		if (pixel_bytes == 3)
+		{
+			for (int j = 0; j < width; ++j) {
+				int src_pos = i * width * 3 + j * 3;
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+			}
+		}else if(pixel_bytes == 4)
+		{
+			for (int j = 0; j < width; ++j) {
+				int src_pos =  i * width * 4 + j * 4;
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+				des_rgb[pos++] = rgb[src_pos++];
+			}
+		}
+	}
+	
+	return des_rgb;
 }
 

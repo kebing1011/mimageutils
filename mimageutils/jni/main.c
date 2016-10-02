@@ -115,8 +115,8 @@ int main(int argc, char *argv[])
 		char* img_input  = argv[idx++];
 		char* img_output = img_input;
 		
-		int src_width = 0;
-		int src_height = 0;
+		int width = 0;
+		int height = 0;
 		int pixel_bytes = 3;
 
 		//read to image buffer
@@ -159,7 +159,7 @@ int main(int argc, char *argv[])
 		{
 			if (to_flag == 0x0)
 				to_flag = to_jpg;
-			rgb = aspire_mao_jpg_read_file(img_input, &src_width, &src_height);
+			rgb = aspire_mao_jpg_read_file(img_input, &width, &height);
 		}
 		else if(aspire_mao_image_is_png_file(img_input))
 		{
@@ -168,9 +168,9 @@ int main(int argc, char *argv[])
 			
 			//png 2 jpg skip alpha
 			if (to_flag == to_jpg)
-				rgb = aspire_mao_png_read_file(img_input, &src_width, &src_height, &pixel_bytes, 1);
+				rgb = aspire_mao_png_read_file(img_input, &width, &height, &pixel_bytes, 1);
 			else
-				rgb = aspire_mao_png_read_file(img_input, &src_width, &src_height, &pixel_bytes, 0);
+				rgb = aspire_mao_png_read_file(img_input, &width, &height, &pixel_bytes, 0);
 		}
 		else
 		{
@@ -179,41 +179,49 @@ int main(int argc, char *argv[])
 		}
 		
 		//check rgb
-		if (!rgb || !src_width || !src_height)
+		if (!rgb || !width || !height)
 		{
 			printf("read image file faild.\n");
 			continue;
 		}
-		
-		//dest height width
-		int width = src_width;
-		int height = src_height;
-		unsigned char * resized_rgb = rgb;
 		
 		//resize check
 		if (arg_size!= NULL)
 		{
 			int size = atoi(arg_size);
 			
+			//back for use
+			float src_width = width;
+			float src_height = height;
+			
 			//calc aspect ratio
 			float ratio_w = size / (float)src_width;
 			float ratio_h = size / (float)src_height;
 			float ratio = ratio_w < ratio_h ? ratio_w : ratio_h;
 			
+			
 			width = ratio * src_width;
 			height = ratio * src_height;
 			
 			//gen resized image buffer
-			resized_rgb = aspire_mao_resize_rgb(width, height, rgb, src_width, src_height, pixel_bytes);
+			unsigned char* src_rgb = rgb;
 			
-			//free rgb
-			free(rgb);
+			//gen new rgb
+			rgb = aspire_mao_resize_rgb(width, height, src_rgb, src_width, src_height, pixel_bytes);
+			
+			//free src_rgb
+			free(src_rgb);
 		}
 		
 		//resize for width or height
 		if (arg_width != NULL
 			|| arg_height != NULL)
 		{
+			//back for use
+			float src_width = width;
+			float src_height = height;
+			
+			//new width or height
 			if (arg_width != NULL)
 				width = atoi(arg_width);
 			
@@ -221,10 +229,13 @@ int main(int argc, char *argv[])
 				height = atoi(arg_height);
 			
 			//gen resized image buffer
-			resized_rgb = aspire_mao_resize_rgb(width, height, rgb, src_width, src_height, pixel_bytes);
+			unsigned char* src_rgb = rgb;
 			
-			//free rgb
-			free(rgb);
+			//gen new rgb
+			rgb = aspire_mao_resize_rgb(width, height, src_rgb, src_width, src_height, pixel_bytes);
+			
+			//free src_rgb
+			free(src_rgb);
 		}
 		
 		//resize with scale
@@ -239,21 +250,56 @@ int main(int argc, char *argv[])
 				return 0;
 			}
 			
+			//back for use
+			float src_width = width;
+			float src_height = height;
+			
+			//new width & height
 			width = scale * src_width;
 			height = scale * src_height;
 			
 			//gen resized image buffer
-			resized_rgb = aspire_mao_resize_rgb(width, height, rgb, src_width, src_height, pixel_bytes);
+			unsigned char* src_rgb = rgb;
 			
-			//free rgb
-			free(rgb);
+			//gen new rgb
+			rgb = aspire_mao_resize_rgb(width, height, src_rgb, src_width, src_height, pixel_bytes);
+			
+			//free src_rgb
+			free(src_rgb);
 		}
 		
+		
+		//flip image
+		if (arg_flip != NULL)
+		{
+			if (strcmp(arg_flip, "v") == 0)
+			{
+				//gen resized image buffer
+				unsigned char* src_rgb = rgb;
+				
+				//gen new rgb
+				rgb = aspire_mao_rgb_flip_vertical(src_rgb, width, height, pixel_bytes);
+				
+				//free src_rgb
+				free(src_rgb);
+			}
+			else if (strcmp(arg_flip, "h") == 0)
+			{
+				//gen resized image buffer
+				unsigned char* src_rgb = rgb;
+				
+				//gen new rgb
+				rgb = aspire_mao_rgb_flip_horizontal(src_rgb, width, height, pixel_bytes);
+				
+				//free src_rgb
+				free(src_rgb);
+			}
+		}
 		
 		//write image to file
 		if (to_flag == to_png)
 		{
-			if (aspire_mao_png_write_file(img_output, resized_rgb, width, height, pixel_bytes))
+			if (aspire_mao_png_write_file(img_output, rgb, width, height, pixel_bytes))
 			{
 				printf("write image file faild.\n");
 			}
@@ -267,7 +313,7 @@ int main(int argc, char *argv[])
 				quality = atoi(arg_quality);
 			}
 			
-			if (aspire_mao_jpg_write_file(img_output, resized_rgb, width, height, quality))
+			if (aspire_mao_jpg_write_file(img_output, rgb, width, height, quality))
 			{
 				printf("write image file faild.\n");
 			}
@@ -278,7 +324,7 @@ int main(int argc, char *argv[])
 		}
 		
 		//free rgb final
-		free(resized_rgb);
+		free(rgb);
 	}
 	
 	return 0;

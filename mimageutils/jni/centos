@@ -1,0 +1,14 @@
+10.211.55.4
+
+scp root@10.211.55.4:/root/
+javac com/aspire/mao/ImageToolKit.java
+
+java com/aspire/mao/ImageToolKit
+
+root@10.211.55.4:/root/mjpeg/jni
+
+cp libimagetoolkit.so /usr/lib64/
+
+javac com/aspirecn/hawaii/image/ImageToolKit.java
+
+java com/aspirecn/hawaii/image/ImageToolKit

@@ -1,0 +1,30 @@
+Linux:
+
+gcc  -std=c99 -I /usr/local/inclue -I /usr/lib/jvm/java/include -I /usr/lib/jvm/java/include/linux -L /usr/local/lib -ljpeg -lpng -fPIC -shared -o libimagetoolkit.so resize.c resize_jni.c 
+
+MaxOS:
+
+gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libmjpeg.jnilib resize.c resize_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
+
+
+ gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libimagetoolkit.jnilib resize.c resize_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
+
+
+
+ MaxOS 
+
+ png2jpg:
+
+ gcc -o png2jpg -I /usr/local/include/ -L /usr/local/lib -ljpeg -lpng main_png2jpg.c rwpngfile.c rwjpgfile.c png2jpg.c
+
+ jpg2png:
+
+ gcc -o jpg2png -I /usr/local/include/ -L /usr/local/lib -ljpeg -lpng main_jpg2png.c rwpngfile.c rwjpgfile.c jpg2png.c
+
+ resizepng:
+
+ gcc -o resizepng -I /usr/local/include/ -L /usr/local/lib -lpng main_resizepng.c rwpngfile.c resizergb.c resizepng.c
+
+ resizejpg:
+
+ gcc -o resizejpg -I /usr/local/include/ -L /usr/local/lib -ljpeg main_resizejpg.c rwjpgfile.c resizergb.c resizejpg.c

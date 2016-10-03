@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		347D31261DA14B880031A6AD /* jpg2png.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D31071DA14B880031A6AD /* jpg2png.c */; };
 		347D31271DA14B880031A6AD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D31091DA14B880031A6AD /* main.c */; };
-		347D312D1DA14B880031A6AD /* png2jpg.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D31101DA14B880031A6AD /* png2jpg.c */; };
-		347D31311DA14B880031A6AD /* resizejpg.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D31191DA14B880031A6AD /* resizejpg.c */; };
-		347D31321DA14B880031A6AD /* resizepng.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D311C1DA14B880031A6AD /* resizepng.c */; };
-		347D31331DA14B880031A6AD /* resizergb.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D311E1DA14B880031A6AD /* resizergb.c */; };
-		347D31341DA14B880031A6AD /* rwfile.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D31201DA14B880031A6AD /* rwfile.c */; };
-		347D31351DA14B880031A6AD /* rwjpg.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D31221DA14B880031A6AD /* rwjpg.c */; };
-		347D31361DA14B880031A6AD /* rwpng.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D31241DA14B880031A6AD /* rwpng.c */; };
+		347D313C1DA26B900031A6AD /* rwjpg.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D313A1DA26B900031A6AD /* rwjpg.c */; };
+		347D313F1DA26D530031A6AD /* rwfile.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D313D1DA26D530031A6AD /* rwfile.c */; };
+		347D32311DA2831B0031A6AD /* rwpng.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D322F1DA2831B0031A6AD /* rwpng.c */; };
+		347D32341DA283CF0031A6AD /* oprgb.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D32321DA283CF0031A6AD /* oprgb.c */; };
+		347D32371DA298EF0031A6AD /* resize_jni.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D32351DA298EF0031A6AD /* resize_jni.c */; };
+		347D323A1DA299120031A6AD /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347D32391DA299120031A6AD /* JavaVM.framework */; };
 		34EE1F6A1D7F06520045A530 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EE1F691D7F06520045A530 /* libjpeg.a */; };
 		34EE1F6C1D82E71E0045A530 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EE1F6B1D82E71E0045A530 /* libpng.a */; };
 		34EE1F741D83B91A0045A530 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EE1F731D83B91A0045A530 /* libz.tbd */; };
@@ -34,25 +32,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		347D31051DA14B880031A6AD /* centos */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = centos; sourceTree = "<group>"; };
-		347D31071DA14B880031A6AD /* jpg2png.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jpg2png.c; sourceTree = "<group>"; };
-		347D31081DA14B880031A6AD /* jpg2png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpg2png.h; sourceTree = "<group>"; };
 		347D31091DA14B880031A6AD /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		347D31101DA14B880031A6AD /* png2jpg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = png2jpg.c; sourceTree = "<group>"; };
-		347D31111DA14B880031A6AD /* png2jpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png2jpg.h; sourceTree = "<group>"; };
 		347D31121DA14B880031A6AD /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		347D31191DA14B880031A6AD /* resizejpg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = resizejpg.c; sourceTree = "<group>"; };
-		347D311A1DA14B880031A6AD /* resizejpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resizejpg.h; sourceTree = "<group>"; };
-		347D311C1DA14B880031A6AD /* resizepng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = resizepng.c; sourceTree = "<group>"; };
-		347D311D1DA14B880031A6AD /* resizepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resizepng.h; sourceTree = "<group>"; };
-		347D311E1DA14B880031A6AD /* resizergb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = resizergb.c; sourceTree = "<group>"; };
-		347D311F1DA14B880031A6AD /* resizergb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resizergb.h; sourceTree = "<group>"; };
-		347D31201DA14B880031A6AD /* rwfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwfile.c; sourceTree = "<group>"; };
-		347D31211DA14B880031A6AD /* rwfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwfile.h; sourceTree = "<group>"; };
-		347D31221DA14B880031A6AD /* rwjpg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwjpg.c; sourceTree = "<group>"; };
-		347D31231DA14B880031A6AD /* rwjpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwjpg.h; sourceTree = "<group>"; };
-		347D31241DA14B880031A6AD /* rwpng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwpng.c; sourceTree = "<group>"; };
-		347D31251DA14B880031A6AD /* rwpng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwpng.h; sourceTree = "<group>"; };
+		347D313A1DA26B900031A6AD /* rwjpg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwjpg.c; sourceTree = "<group>"; };
+		347D313B1DA26B900031A6AD /* rwjpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwjpg.h; sourceTree = "<group>"; };
+		347D313D1DA26D530031A6AD /* rwfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwfile.c; sourceTree = "<group>"; };
+		347D313E1DA26D530031A6AD /* rwfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwfile.h; sourceTree = "<group>"; };
+		347D322F1DA2831B0031A6AD /* rwpng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwpng.c; sourceTree = "<group>"; };
+		347D32301DA2831B0031A6AD /* rwpng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwpng.h; sourceTree = "<group>"; };
+		347D32321DA283CF0031A6AD /* oprgb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = oprgb.c; sourceTree = "<group>"; };
+		347D32331DA283CF0031A6AD /* oprgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oprgb.h; sourceTree = "<group>"; };
+		347D32351DA298EF0031A6AD /* resize_jni.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = resize_jni.c; sourceTree = "<group>"; };
+		347D32361DA298EF0031A6AD /* resize_jni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resize_jni.h; sourceTree = "<group>"; };
+		347D32391DA299120031A6AD /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = System/Library/Frameworks/JavaVM.framework; sourceTree = SDKROOT; };
 		34EE1F691D7F06520045A530 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = ../../../../usr/local/lib/libjpeg.a; sourceTree = "<group>"; };
 		34EE1F6B1D82E71E0045A530 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = ../../../../usr/local/Cellar/libpng/1.6.18/lib/libpng.a; sourceTree = "<group>"; };
 		34EE1F731D83B91A0045A530 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -64,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347D323A1DA299120031A6AD /* JavaVM.framework in Frameworks */,
 				34EE1F741D83B91A0045A530 /* libz.tbd in Frameworks */,
 				34EE1F6A1D7F06520045A530 /* libjpeg.a in Frameworks */,
 				34EE1F6C1D82E71E0045A530 /* libpng.a in Frameworks */,
@@ -76,28 +69,29 @@
 		347D31041DA14B870031A6AD /* jni */ = {
 			isa = PBXGroup;
 			children = (
-				347D31051DA14B880031A6AD /* centos */,
-				347D31071DA14B880031A6AD /* jpg2png.c */,
-				347D31081DA14B880031A6AD /* jpg2png.h */,
+				347D32351DA298EF0031A6AD /* resize_jni.c */,
+				347D32361DA298EF0031A6AD /* resize_jni.h */,
+				347D313A1DA26B900031A6AD /* rwjpg.c */,
+				347D313B1DA26B900031A6AD /* rwjpg.h */,
 				347D31091DA14B880031A6AD /* main.c */,
-				347D31101DA14B880031A6AD /* png2jpg.c */,
-				347D31111DA14B880031A6AD /* png2jpg.h */,
+				347D313D1DA26D530031A6AD /* rwfile.c */,
+				347D313E1DA26D530031A6AD /* rwfile.h */,
+				347D322F1DA2831B0031A6AD /* rwpng.c */,
+				347D32301DA2831B0031A6AD /* rwpng.h */,
+				347D32321DA283CF0031A6AD /* oprgb.c */,
+				347D32331DA283CF0031A6AD /* oprgb.h */,
 				347D31121DA14B880031A6AD /* README */,
-				347D31191DA14B880031A6AD /* resizejpg.c */,
-				347D311A1DA14B880031A6AD /* resizejpg.h */,
-				347D311C1DA14B880031A6AD /* resizepng.c */,
-				347D311D1DA14B880031A6AD /* resizepng.h */,
-				347D311E1DA14B880031A6AD /* resizergb.c */,
-				347D311F1DA14B880031A6AD /* resizergb.h */,
-				347D31201DA14B880031A6AD /* rwfile.c */,
-				347D31211DA14B880031A6AD /* rwfile.h */,
-				347D31221DA14B880031A6AD /* rwjpg.c */,
-				347D31231DA14B880031A6AD /* rwjpg.h */,
-				347D31241DA14B880031A6AD /* rwpng.c */,
-				347D31251DA14B880031A6AD /* rwpng.h */,
 			);
 			name = jni;
 			path = mimageutils/jni;
+			sourceTree = "<group>";
+		};
+		347D32381DA299120031A6AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				347D32391DA299120031A6AD /* JavaVM.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		34FFD5D01D708963000F1F01 = {
@@ -108,6 +102,7 @@
 				34EE1F691D7F06520045A530 /* libjpeg.a */,
 				347D31041DA14B870031A6AD /* jni */,
 				34FFD5DA1D708963000F1F01 /* Products */,
+				347D32381DA299120031A6AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,15 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				347D31331DA14B880031A6AD /* resizergb.c in Sources */,
-				347D31351DA14B880031A6AD /* rwjpg.c in Sources */,
+				347D32341DA283CF0031A6AD /* oprgb.c in Sources */,
+				347D313F1DA26D530031A6AD /* rwfile.c in Sources */,
+				347D313C1DA26B900031A6AD /* rwjpg.c in Sources */,
+				347D32371DA298EF0031A6AD /* resize_jni.c in Sources */,
+				347D32311DA2831B0031A6AD /* rwpng.c in Sources */,
 				347D31271DA14B880031A6AD /* main.c in Sources */,
-				347D31361DA14B880031A6AD /* rwpng.c in Sources */,
-				347D31341DA14B880031A6AD /* rwfile.c in Sources */,
-				347D31321DA14B880031A6AD /* resizepng.c in Sources */,
-				347D312D1DA14B880031A6AD /* png2jpg.c in Sources */,
-				347D31261DA14B880031A6AD /* jpg2png.c in Sources */,
-				347D31311DA14B880031A6AD /* resizejpg.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,8 +272,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				HEADER_SEARCH_PATHS = (
+					"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/**",
 					/usr/local/include,
-					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Headers,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
@@ -296,8 +288,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				HEADER_SEARCH_PATHS = (
+					"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/**",
 					/usr/local/include,
-					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Headers,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,

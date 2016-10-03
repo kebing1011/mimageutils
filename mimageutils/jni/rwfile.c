@@ -1,10 +1,9 @@
-//
-//  rwfile.c
-//  mjpeg
-//
-//  Created by mao on 02/10/2016.
-//  Copyright © 2016 Maokebing. All rights reserved.
-//
+/***********************************************************
+ //  rwfile.h
+ //  Mao Kebing
+ //  Created by Mao on 13-7-25.
+ //  Copyright (c) 2013 Eduapp. All rights reserved.
+ ***********************************************************/
 
 #include "rwfile.h"
 #include <stdlib.h>

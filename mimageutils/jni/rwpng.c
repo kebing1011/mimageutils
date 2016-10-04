@@ -597,7 +597,7 @@ int aspire_mao_image_is_png_file(const char* file_name)
 	//read 4 bytes
 	unsigned char buf[4];
 	memset(buf, 0, 4);
-	ssize_t readnum = fread(buf, 4, 1, pFile);
+	size_t readnum = fread(buf, 4, 1, pFile);
 	if (readnum != 1)
 	{
 		fclose(pFile);

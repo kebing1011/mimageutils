@@ -1,0 +1,22 @@
+INCLUDE = -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Headers
+LDFLAGS = -L /usr/local/lib
+LIBS    = -lpng -ljpeg
+OBJECTS = resize_jni.o rwjpg.o rwpng.o oprgb.o
+TARGET  = libimagetoolkit.jnilib
+CFLAGS  = -bundle -flat_namespace -undefined suppress -Wl,-no_pie
+
+$(TARGET) : $(OBJECTS)
+	cc -o $(TARGET) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBS)
+resize_jni.o : resize_jni.c
+	cc -c resize_jni.c $(INCLUDE)
+rwjpg.o : rwjpg.c
+	cc -c rwjpg.c $(INCLUDE)
+rwpng.o : rwpng.c
+	cc -c rwpng.c $(INCLUDE)
+oprgb.o : oprgb.c
+	cc -c oprgb.c $(INCLUDE)
+clean:
+	rm $(OBJECTS) $(TARGET)
+install:
+	install -d /Library/Java/Extensions
+	install -p -m 0755 $(TARGET) /Library/Java/Extensions

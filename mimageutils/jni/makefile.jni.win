@@ -1,0 +1,21 @@
+INCLUDE = -I /c/MinGW/include -I "/c/Program Files/Java/jdk1.7.0_79/include" -I "/c/Program Files/Java/jdk1.7.0_79/include/win32"
+LIBS    = /c/MinGW/lib/libpng.a /c/MinGW/lib/libjpeg.a /c/MinGW/lib/libz.a
+OBJECTS = resize_jni.o rwjpg.o rwpng.o oprgb.o
+TARGET  = libimagetoolkit.dll
+CFLAGS  = -std=c99 -shared
+CC      = gcc
+
+$(TARGET) : $(OBJECTS)
+	$(CC) -o $(TARGET) $(CFLAGS) $(OBJECTS) $(LIBS)
+resize_jni.o : resize_jni.c
+	$(CC) -c resize_jni.c $(CFLAGS) $(INCLUDE)
+rwjpg.o : rwjpg.c
+	$(CC) -c rwjpg.c $(CFLAGS) $(INCLUDE)
+rwpng.o : rwpng.c
+	$(CC) -c rwpng.c $(CFLAGS) $(INCLUDE)
+oprgb.o : oprgb.c
+	$(CC) -c oprgb.c $(CFLAGS) $(INCLUDE)
+clean:
+	rm $(OBJECTS) $(TARGET)
+install:
+	install -p -m 0755 $(TARGET) /c/windows/system32

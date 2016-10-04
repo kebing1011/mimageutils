@@ -4,10 +4,10 @@ gcc  -std=c99 -I /usr/local/inclue -I /usr/lib/jvm/java/include -I /usr/lib/jvm/
 
 MaxOS:
 
-gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libmjpeg.jnilib resize.c resize_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
+gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libimagetoolkit.jnilib rwjpg.c rwpng.c oprgb.c resize_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
 
 
- gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libimagetoolkit.jnilib resize.c resize_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
+ gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libimagetoolkit.jnilib resize.c resize_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
 
 
 
@@ -28,3 +28,10 @@ gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platform
  resizejpg:
 
  gcc -o resizejpg -I /usr/local/include/ -L /usr/local/lib -ljpeg main_resizejpg.c rwjpgfile.c resizergb.c resizejpg.c
+
+
+windowns:
+
+gcc -o imgtl  main_imgtl.c rwjpg.c rwpng.c oprgb.c -I /c/MinGW/include/ /c/Mi
+GW/lib/libpng.a /c/MinGW/lib/libjpeg.a /c/MinGW/lib/libz.a
+

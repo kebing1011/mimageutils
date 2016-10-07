@@ -84,4 +84,20 @@ unsigned char* aspire_mao_rgb_rotate_left(unsigned char *rgb,
 										  int height,
 										  int pixel_bytes);
 
+
+
+/**
+ *  create rgb data
+ *
+ *  @param rgb     input rgba eg. ff00ffff RGBA
+ *  @param width   width
+ *  @param width   height
+ *
+ *  @return output rgb buffer or NULL if error.
+ */
+unsigned char* aspire_mao_rgb_create(char* rgba_str,
+									 int width,
+									 int height,
+									 int skip_alpha);
+
 #endif /* resizergb_h */

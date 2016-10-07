@@ -8,8 +8,15 @@ gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platform
 
 imgtl:
 MaxOS
-gcc -o imgtl -I /usr/local/include/ -L /usr/local/lib -ljpeg -lpng rwjpg.c rwpng.c oprgb.c main_imgtl.c
+gcc -o imgtl -I /usr/local/include/ -L /usr/local/lib -ljpeg -lpng rwjpg.c rwpng.c oprgb.c imgmk.c
 
 windowns:
-gcc -o imgtl  main_imgtl.c rwjpg.c rwpng.c oprgb.c -I /c/MinGW/include/ /c/MinGW/lib/libpng.a /c/MinGW/lib/libjpeg.a /c/MinGW/lib/libz.a
+gcc -o imgtl  imgtl.c rwjpg.c rwpng.c oprgb.c -I /c/MinGW/include/ /c/MinGW/lib/libpng.a /c/MinGW/lib/libjpeg.a /c/MinGW/lib/libz.a
 
+
+imgmk:
+MaxOS
+gcc -o imgmk -I /usr/local/include/ -L /usr/local/lib -ljpeg -lpng rwjpg.c rwpng.c oprgb.c imgmk.c
+
+windowns:
+gcc -o imgmk  imgmk.c rwjpg.c rwpng.c oprgb.c -I /c/MinGW/include/ /c/MinGW/lib/libpng.a /c/MinGW/lib/libjpeg.a /c/MinGW/lib/libz.a

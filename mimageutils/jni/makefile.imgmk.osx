@@ -1,0 +1,21 @@
+INCLUDE = -I /usr/local/include
+LDFLAGS = -L /usr/local/lib
+LIBS    = -lpng -ljpeg
+OBJECTS = imgmk.o rwjpg.o rwpng.o oprgb.o
+TARGET  = imgmk
+
+$(TARGET) : $(OBJECTS)
+	cc -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(LIBS)
+
+imgmk.o : imgmk.c
+	cc -c imgmk.c $(INCLUDE)
+rwjpg.o : rwjpg.c
+	cc -c rwjpg.c $(INCLUDE)
+rwpng.o : rwpng.c
+	cc -c rwpng.c $(INCLUDE)
+oprgb.o : oprgb.c
+	cc -c oprgb.c $(INCLUDE)
+clean:
+	rm $(OBJECTS) $(TARGET)
+install:
+	install -p -m 0755 $(TARGET) /usr/local/bin

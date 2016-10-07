@@ -178,3 +178,68 @@ unsigned char* aspire_mao_rgb_rotate_left(unsigned char *rgb, int width, int hei
 	return des_rgb;
 }
 
+
+/**
+ *  create rgb data
+ *
+ *  @param rgba_str     input rgba eg. ff00ffff RGBA
+ *  @param width   width
+ *  @param width   height
+ *
+ *  @return output rgb buffer or NULL if error.
+ */
+unsigned char* aspire_mao_rgb_create(char* rgba_str,
+									 int width,
+									 int height,
+									 int skip_alpha)
+{
+	if (rgba_str == NULL)
+		return NULL;
+	
+	size_t len = strlen(rgba_str);
+	if (len != 6 && len != 8)
+	{
+		printf("rgba use RGBA or RGB eg. ff00ff00 ff00ff\n");
+		return NULL;
+	}
+
+	unsigned char rgba[4] = {0};
+	int pixel_bytes = 0;
+
+	//rgba
+	if (len == 8 && !skip_alpha)
+	{
+		pixel_bytes = 4;
+		long long rgball = strtol(rgba_str, NULL, 16);
+		rgba[3] = (unsigned char) (rgball & 0xFF);
+		rgba[2] = (unsigned char) ((rgball >> 8) & 0xFF);
+		rgba[1] = (unsigned char) ((rgball >> 16) & 0xFF);
+		rgba[0] = (unsigned char) ((rgball >> 24) & 0xFF);
+	}
+	else
+	{
+		pixel_bytes = 3;
+		long long rgball = strtol(rgba_str, NULL, 16);
+		if (len == 8)
+			rgball = (rgball >> 8) & 0xFFFFFF;//skip alpha
+		rgba[2] = (unsigned char) (rgball & 0xFF);
+		rgba[1] = (unsigned char) ((rgball >> 8) & 0xFF);
+		rgba[0] = (unsigned char) ((rgball >> 16) & 0xFF);
+	}
+
+	
+	unsigned char* output = malloc(width * height * pixel_bytes);
+	
+	if (output == NULL)
+		return NULL;
+	
+	//assign rgb to output
+	unsigned char* pRgb = output;
+	
+	for (int i = 0; i < height * width; ++i) {
+		memcpy(pRgb, rgba, pixel_bytes);
+		pRgb += pixel_bytes;
+	}
+	
+	return output;
+}

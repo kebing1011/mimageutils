@@ -1,11 +1,10 @@
 INCLUDE = -I /usr/local/include
-LDFLAGS = -L /usr/local/lib
-LIBS    = -lpng -ljpeg
+LIBS    = /usr/local/lib/libjpeg.a /usr/local/lib/libpng.a /usr/local/lib/libz.a 
 OBJECTS = imgmk.o rwjpg.o rwpng.o oprgb.o
 TARGET  = imgmk
 
 $(TARGET) : $(OBJECTS)
-	cc -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(LIBS)
+	cc -o $(TARGET) $(OBJECTS)  $(LIBS)
 
 imgmk.o : imgmk.c
 	cc -c imgmk.c $(INCLUDE)

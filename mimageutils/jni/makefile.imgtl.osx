@@ -1,6 +1,5 @@
 INCLUDE = -I /usr/local/include
-LDFLAGS = -L /usr/local/lib
-LIBS    = -lpng -ljpeg
+LIBS    = /usr/local/lib/libpng.a /usr/local/lib/libjpeg.a /usr/local/lib/libz.a
 OBJECTS = imgtl.o rwjpg.o rwpng.o oprgb.o
 TARGET  = imgtl
 

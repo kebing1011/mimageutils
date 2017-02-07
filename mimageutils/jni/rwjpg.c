@@ -317,16 +317,17 @@ int aspire_mao_jpg_write_file (const char* jpg_file_name, const unsigned char* r
 int aspire_mao_image_is_jpg(unsigned char* img_data, unsigned int img_data_size)
 {
 	if (img_data == NULL
-		|| img_data_size <= 4)
+		|| img_data_size <= 2)
 		return 0;
 	
-	unsigned char buf[4];
+	unsigned char buf[2];
 	//jpeg SOI FFD8 && EOI FFD9
-	memset(buf, 0, 4);
+	memset(buf, 0, 2);
 	memcpy(buf, img_data, 2);//FFD8
-	memcpy(buf + 2, img_data + img_data_size - 2, 2); //FFD9
-	unsigned char jpgsign[4] = {0xFF, 0xD8, 0xFF, 0xD9};
-	if (memcmp(buf, jpgsign, 4) == 0)
+	/* some jpeg not suffix with FFD9 */
+//	memcpy(buf + 2, img_data + img_data_size - 2, 2); //FFD9
+	unsigned char jpgsign[2] = {0xFF, 0xD8};
+	if (memcmp(buf, jpgsign, 2) == 0)
 	{
 		return 1;
 	}

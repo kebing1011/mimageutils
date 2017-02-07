@@ -350,8 +350,8 @@ int aspire_mao_image_is_jpg_file(const char* file_name)
 		return 0;
 	
 	//jpeg SOI FFD8 && EOI FFD9
-	unsigned char buf[4];
-	memset(buf, 0, 4);
+	unsigned char buf[2];
+	memset(buf, 0x0, 2);
 	
 	size_t readnum = fread(buf, 2, 1, pFile);//FFD8
 	if (readnum != 1)
@@ -359,17 +359,17 @@ int aspire_mao_image_is_jpg_file(const char* file_name)
 		fclose(pFile);
 		return 0;
 	}
+// some jpeg not suffix with FFD9
+//	fseek(pFile, -2, SEEK_END);
+//	readnum = fread(buf + 2, 2, 1, pFile);//FFD9
+//	if (readnum != 1)
+//	{
+//		fclose(pFile);
+//		return 0;
+//	}
 	
-	fseek(pFile, -2, SEEK_END);
-	readnum = fread(buf + 2, 2, 1, pFile);//FFD9
-	if (readnum != 1)
-	{
-		fclose(pFile);
-		return 0;
-	}
-	
-	unsigned char jpgsign[4] = {0xFF, 0xD8, 0xFF, 0xD9};
-	if (memcmp(buf, jpgsign, 4) == 0)
+	unsigned char jpgsign[2] = {0xFF, 0xD8};
+	if (memcmp(buf, jpgsign, 2) == 0)
 	{
 		fclose(pFile);
 		return 1;

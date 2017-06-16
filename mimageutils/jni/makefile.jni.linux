@@ -1,7 +1,7 @@
 INCLUDE = -I /usr/local/include -I /usr/lib/jvm/java/include -I /usr/lib/jvm/java/include/linux
 LDFLAGS = -L /usr/local/lib
 LIBS    = -lpng -ljpeg
-OBJECTS = resize_jni.o rwjpg.o rwpng.o oprgb.o
+OBJECTS = resize_jni.o resize.o rwjpg.o rwpng.o oprgb.o
 TARGET  = libimagetoolkit.so
 CFLAGS  = -std=c99 -fPIC -shared
 
@@ -15,6 +15,8 @@ rwpng.o : rwpng.c
 	cc -c rwpng.c $(CFLAGS) $(INCLUDE)
 oprgb.o : oprgb.c
 	cc -c oprgb.c $(CFLAGS) $(INCLUDE)
+resize.o : resize.c
+	cc -c resize.c $(CFLAGS) $(INCLUDE)		
 clean:
 	rm $(OBJECTS) $(TARGET)
 install:

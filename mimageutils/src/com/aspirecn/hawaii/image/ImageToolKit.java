@@ -83,20 +83,16 @@ public final class ImageToolKit {
 		byte[] buf2 = null;
 
 		// test resize png
-		for (int i = 0; i < 100; ++i) {
-			buf1 = readFile(png1file);
-			buf2 = resize(buf1, 300, 100);
-			writeFile(png2file, buf2);
-			System.out.println("png write" + i);
-		}
+		buf1 = readFile(png1file);
+		buf2 = resize(buf1, 300, 100);
+		writeFile(png2file, buf2);
+		System.out.println(png1file + " resize --> " + png2file + " sucess.");
 
 		// test resize jpg
-		for (int i = 0; i < 100; ++i) {
-			buf1 = readFile(jpg1file);
-			buf2 = resize(buf1, 300, 100);
-			writeFile(jpg2file, buf2);
-			System.out.println("jpg write" + i);		}
-
+		buf1 = readFile(jpg1file);
+		buf2 = resize(buf1, 300, 100);
+		writeFile(jpg2file, buf2);
+		System.out.println(jpg1file + " resize --> " + jpg2file + " sucess.");
 	}
 
 }

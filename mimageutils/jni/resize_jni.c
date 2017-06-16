@@ -2,9 +2,8 @@
 #include <jni.h>
 #include <string.h>
 #include <stdlib.h>
-#include "rwjpg.h"
-#include "rwpng.h"
-#include "oprgb.h"
+#include "resize.h"
+
 /* Header for class com_mao_jpeg_Utils */
 //com.aspirecn.hawaii
 #ifndef _Included_com_aspire_mao_ImageToolKit
@@ -22,67 +21,19 @@ JNIEXPORT jbyteArray JNICALL Java_com_aspirecn_hawaii_image_ImageToolKit_resize
 	if ((array == NULL) || size == 0 || quality <= 0 || quality > 100)
 		return NULL;
 
-	jboolean iscopy = JNI_FALSE;
-	jbyte* src = (*env)->GetByteArrayElements(env, array, &iscopy);
+	//create src
+	jbyte* src = (*env)->GetByteArrayElements(env, array, NULL);
 	if ( !src )
 		return NULL;
 	
 	jsize src_size = (*env)->GetArrayLength(env, array);
 
-	//set some vals
-	int width       = 0;
-	int height      = 0;
-	int pixel_bytes = 3;
-	int is_png      = 0;
-	int is_jpg      = 0;
-	unsigned char* rgb = NULL;
-
-	//read from jpg or png
-	if (aspire_mao_image_is_jpg((unsigned char*)src, src_size))
-	{
-		rgb = aspire_mao_jpg_read((unsigned char*)src, src_size, &width, &height);
-		is_jpg = 1;
-	}
-	else if(aspire_mao_image_is_png((unsigned char*)src, src_size))
-	{
-		rgb = aspire_mao_png_read((unsigned char*)src, src_size, &width, &height, &pixel_bytes, 0);
-		is_png = 1;
-	}
-	
-	//free src bytes
-	(*env)->ReleaseByteArrayElements(env, array, src, 0);
-	
-	
-	//check rgb & width & height
-	if (rgb == NULL
-		|| width == 0
-		|| height == 0)
-		return NULL;
-	
-	
-	//calc aspect ratio
-	float ratio_w = size / (float)width;
-	float ratio_h = size / (float)height;
-	float ratio = ratio_w < ratio_h ? ratio_w : ratio_h;
-	
-	//dest size
-	int dest_width = ratio * width;
-	int dest_height = ratio * height;
-	
-	//resize rgb now.
-	unsigned char* resize_rgb = aspire_mao_resize_rgb(dest_width, dest_height, rgb, width, height, pixel_bytes);
-	
-	//free src_rgb
-	free(rgb);
-	
-	
+	//resize native
 	jsize dst_size = 0;
-	jbyte* dst = NULL;
-	if (is_jpg) {
-		dst = (jbyte *)aspire_mao_jpg_write((unsigned int *)&dst_size, (unsigned char*)resize_rgb, dest_width, dest_height, quality);
-	}else if (is_png) {
-		dst = (jbyte *)aspire_mao_png_write((unsigned int *)&dst_size, (unsigned char*)resize_rgb, dest_width, dest_height, pixel_bytes);
-	}
+	jbyte* dst = (jbyte *)aspire_mao_resize_image((unsigned int *)&dst_size, (unsigned char*)src, src_size, size, quality);
+
+	//release src
+	(*env)->ReleaseByteArrayElements(env, array, src, 0);
 	
 	//check dst
 	if (!dst || !dst_size)

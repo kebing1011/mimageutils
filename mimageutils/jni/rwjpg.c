@@ -8,7 +8,6 @@
 #include "rwjpg.h"
 #include <jpeglib.h>
 #include <setjmp.h>
-#include <png.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -139,7 +138,8 @@ unsigned char* aspire_mao_jpg_write (unsigned int* jpg_data_size, const unsigned
 	jpeg_create_compress(&cinfo);
 	
 	unsigned char* out_buffer = NULL;
-	jpeg_mem_dest(&cinfo, &out_buffer, (unsigned long*)jpg_data_size);
+	unsigned long out_size = 0;
+	jpeg_mem_dest(&cinfo, &out_buffer, &out_size);
 	
 	cinfo.image_width = width; 	/* image width and height, in pixels */
 	cinfo.image_height = height;
@@ -162,6 +162,8 @@ unsigned char* aspire_mao_jpg_write (unsigned int* jpg_data_size, const unsigned
 	jpeg_finish_compress(&cinfo);
 	jpeg_destroy_compress(&cinfo);
 	
+	/*get size out*/
+	*jpg_data_size = (unsigned int)out_size;
 	
 	return out_buffer;
 }

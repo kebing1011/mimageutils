@@ -22,7 +22,7 @@ Usage:
       -r [rotate] l: left rotate or r: right rotate
 ```
 
-##imgmk
+## imgmk
 图片创建命令行程序（支持Linux, Windows, MaxOS）
 
 根据rgba颜色值创建指定大小的图片 png or jpg

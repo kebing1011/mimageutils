@@ -1,0 +1,24 @@
+INCLUDE = -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Headers
+LDFLAGS = -L /usr/local/lib
+LIBS    = -ljpeg -lwebp
+OBJECTS = webp2jpg_jni.o webp2jpg.o rwjpg.o rwwebp.o oprgb.o
+TARGET  = libimagetools.jnilib
+CFLAGS  = -bundle -flat_namespace -undefined suppress -Wl,-no_pie
+
+$(TARGET) : $(OBJECTS)
+	cc -o $(TARGET) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBS)
+webp2jpg_jni.o : webp2jpg_jni.c
+	cc -c webp2jpg_jni.c $(INCLUDE)
+rwjpg.o : rwjpg.c
+	cc -c rwjpg.c $(INCLUDE)
+rwwebp.o : rwwebp.c
+	cc -c rwwebp.c $(INCLUDE)	
+oprgb.o : oprgb.c
+	cc -c oprgb.c $(INCLUDE)
+webp2jpg.o : webp2jpg.c
+	cc -c webp2jpg.c $(INCLUDE)	
+clean:
+	rm $(OBJECTS) $(TARGET)
+install:
+	install -d /Library/Java/Extensions
+	install -p -m 0755 $(TARGET) /Library/Java/Extensions

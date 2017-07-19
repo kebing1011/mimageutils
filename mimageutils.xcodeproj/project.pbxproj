@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34462A001F1EFCE8000E17AF /* rwwebp.c in Sources */ = {isa = PBXBuildFile; fileRef = 344629FE1F1EFCE8000E17AF /* rwwebp.c */; };
+		34462A041F1F014D000E17AF /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34462A031F1F014D000E17AF /* libwebp.a */; };
+		34462A0A1F1F4493000E17AF /* webp2jpg.c in Sources */ = {isa = PBXBuildFile; fileRef = 34462A081F1F4493000E17AF /* webp2jpg.c */; };
+		34462A0E1F1F47F6000E17AF /* webp2jpg_jni.c in Sources */ = {isa = PBXBuildFile; fileRef = 34462A0D1F1F47F6000E17AF /* webp2jpg_jni.c */; };
 		347D313C1DA26B900031A6AD /* rwjpg.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D313A1DA26B900031A6AD /* rwjpg.c */; };
 		347D313F1DA26D530031A6AD /* rwfile.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D313D1DA26D530031A6AD /* rwfile.c */; };
 		347D32311DA2831B0031A6AD /* rwpng.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D322F1DA2831B0031A6AD /* rwpng.c */; };
@@ -14,7 +18,6 @@
 		347D32371DA298EF0031A6AD /* resize_jni.c in Sources */ = {isa = PBXBuildFile; fileRef = 347D32351DA298EF0031A6AD /* resize_jni.c */; };
 		347D323A1DA299120031A6AD /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347D32391DA299120031A6AD /* JavaVM.framework */; };
 		34AC9BD91EF381C800EEFCBA /* resize.c in Sources */ = {isa = PBXBuildFile; fileRef = 34AC9BD71EF381C800EEFCBA /* resize.c */; };
-		34AC9BDB1EF3888800EEFCBA /* main_resize.c in Sources */ = {isa = PBXBuildFile; fileRef = 34AC9BDA1EF3888800EEFCBA /* main_resize.c */; };
 		34EE1F6A1D7F06520045A530 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EE1F691D7F06520045A530 /* libjpeg.a */; };
 		34EE1F6C1D82E71E0045A530 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EE1F6B1D82E71E0045A530 /* libpng.a */; };
 		34EE1F741D83B91A0045A530 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EE1F731D83B91A0045A530 /* libz.tbd */; };
@@ -33,6 +36,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		344629FE1F1EFCE8000E17AF /* rwwebp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwwebp.c; sourceTree = "<group>"; };
+		344629FF1F1EFCE8000E17AF /* rwwebp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwwebp.h; sourceTree = "<group>"; };
+		34462A011F1F0147000E17AF /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = ../../../../usr/local/lib/libwebp.a; sourceTree = "<group>"; };
+		34462A031F1F014D000E17AF /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebp.a; sourceTree = "<group>"; };
+		34462A071F1F4466000E17AF /* webp2jpg_jni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webp2jpg_jni.h; sourceTree = "<group>"; };
+		34462A081F1F4493000E17AF /* webp2jpg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = webp2jpg.c; sourceTree = "<group>"; };
+		34462A091F1F4493000E17AF /* webp2jpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webp2jpg.h; sourceTree = "<group>"; };
+		34462A0D1F1F47F6000E17AF /* webp2jpg_jni.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = webp2jpg_jni.c; sourceTree = "<group>"; };
 		347D31121DA14B880031A6AD /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		347D313A1DA26B900031A6AD /* rwjpg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwjpg.c; sourceTree = "<group>"; };
 		347D313B1DA26B900031A6AD /* rwjpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwjpg.h; sourceTree = "<group>"; };
@@ -47,7 +58,6 @@
 		347D32391DA299120031A6AD /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = System/Library/Frameworks/JavaVM.framework; sourceTree = SDKROOT; };
 		34AC9BD71EF381C800EEFCBA /* resize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = resize.c; sourceTree = "<group>"; };
 		34AC9BD81EF381C800EEFCBA /* resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resize.h; sourceTree = "<group>"; };
-		34AC9BDA1EF3888800EEFCBA /* main_resize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main_resize.c; sourceTree = "<group>"; };
 		34EE1F691D7F06520045A530 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = ../../../../usr/local/lib/libjpeg.a; sourceTree = "<group>"; };
 		34EE1F6B1D82E71E0045A530 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = ../../../../usr/local/Cellar/libpng/1.6.18/lib/libpng.a; sourceTree = "<group>"; };
 		34EE1F731D83B91A0045A530 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -63,6 +73,7 @@
 				34EE1F741D83B91A0045A530 /* libz.tbd in Frameworks */,
 				34EE1F6A1D7F06520045A530 /* libjpeg.a in Frameworks */,
 				34EE1F6C1D82E71E0045A530 /* libpng.a in Frameworks */,
+				34462A041F1F014D000E17AF /* libwebp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,11 +83,16 @@
 		347D31041DA14B870031A6AD /* jni */ = {
 			isa = PBXGroup;
 			children = (
-				34AC9BDA1EF3888800EEFCBA /* main_resize.c */,
+				34462A071F1F4466000E17AF /* webp2jpg_jni.h */,
+				34462A0D1F1F47F6000E17AF /* webp2jpg_jni.c */,
+				34462A081F1F4493000E17AF /* webp2jpg.c */,
+				34462A091F1F4493000E17AF /* webp2jpg.h */,
 				347D32351DA298EF0031A6AD /* resize_jni.c */,
 				347D32361DA298EF0031A6AD /* resize_jni.h */,
 				347D313A1DA26B900031A6AD /* rwjpg.c */,
 				347D313B1DA26B900031A6AD /* rwjpg.h */,
+				344629FE1F1EFCE8000E17AF /* rwwebp.c */,
+				344629FF1F1EFCE8000E17AF /* rwwebp.h */,
 				347D313D1DA26D530031A6AD /* rwfile.c */,
 				347D313E1DA26D530031A6AD /* rwfile.h */,
 				347D322F1DA2831B0031A6AD /* rwpng.c */,
@@ -94,6 +110,7 @@
 		347D32381DA299120031A6AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34462A011F1F0147000E17AF /* libwebp.a */,
 				347D32391DA299120031A6AD /* JavaVM.framework */,
 			);
 			name = Frameworks;
@@ -105,6 +122,7 @@
 				34EE1F731D83B91A0045A530 /* libz.tbd */,
 				34EE1F6B1D82E71E0045A530 /* libpng.a */,
 				34EE1F691D7F06520045A530 /* libjpeg.a */,
+				34462A031F1F014D000E17AF /* libwebp.a */,
 				347D31041DA14B870031A6AD /* jni */,
 				34FFD5DA1D708963000F1F01 /* Products */,
 				347D32381DA299120031A6AD /* Frameworks */,
@@ -175,12 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34AC9BDB1EF3888800EEFCBA /* main_resize.c in Sources */,
+				34462A001F1EFCE8000E17AF /* rwwebp.c in Sources */,
+				34462A0A1F1F4493000E17AF /* webp2jpg.c in Sources */,
 				34AC9BD91EF381C800EEFCBA /* resize.c in Sources */,
 				347D32341DA283CF0031A6AD /* oprgb.c in Sources */,
 				347D313F1DA26D530031A6AD /* rwfile.c in Sources */,
 				347D313C1DA26B900031A6AD /* rwjpg.c in Sources */,
 				347D32371DA298EF0031A6AD /* resize_jni.c in Sources */,
+				34462A0E1F1F47F6000E17AF /* webp2jpg_jni.c in Sources */,
 				347D32311DA2831B0031A6AD /* rwpng.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +304,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/Cellar/libpng/1.6.18/lib,
+					/usr/local/include,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = mimageutils;
 			};
@@ -300,6 +322,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/Cellar/libpng/1.6.18/lib,
+					/usr/local/include,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = mimageutils;
 			};

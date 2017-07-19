@@ -10,6 +10,7 @@
 #include <getopt.h>
 #include "rwjpg.h"
 #include "rwpng.h"
+#include "rwwebp.h"
 #include "oprgb.h"
 #include <stdio.h>
 #include <string.h>
@@ -19,7 +20,7 @@ void showUsage()
 {
 	printf("Usage:\n");
 	printf("      imgtl [-oqzswhfr] [file ...]\n");
-	printf("      -o [output] output image file use format with .jpg or .png\n");
+	printf("      -o [output] output image file use format with .jpg .webp or .png\n");
 	printf("      -q [quality] for quality 1~100 eg. 75\n");
 	printf("      -z [MaxWH] resize aspect to size\n");
 	printf("      -s [scale] resize aspect to scale\n");
@@ -129,7 +130,8 @@ int main(int argc, char *argv[])
 		int to_flag = 0x0;
 		int to_jpg = 0x1;
 		int to_png = 0x2;
-		
+		int to_webp = 0x3;
+
 		//output image check.
 		if (arg_output != NULL)
 		{
@@ -148,12 +150,16 @@ int main(int argc, char *argv[])
 			{
 				to_flag = to_png;
 			}
+			else if (strstr(arg_output, "webp") != NULL)
+			{
+				to_flag = to_webp;
+			}
 			else
 			{
 				to_flag = 0;
 				img_output = NULL;
 				
-				printf("output file format need use .jpg or .png.\n");
+				printf("output file format need use .jpg .webp or .png.\n");
 				
 				return 0;
 			}
@@ -176,6 +182,17 @@ int main(int argc, char *argv[])
 				rgb = aspire_mao_png_read_file(img_input, &width, &height, &pixel_bytes, 1);
 			else
 				rgb = aspire_mao_png_read_file(img_input, &width, &height, &pixel_bytes, 0);
+		}
+		else if (aspire_mao_image_is_webp_file(img_input))
+		{
+			if (to_flag == 0x0)
+				to_flag = to_webp;
+			
+			//png 2 jpg skip alpha
+			if (to_flag == to_jpg)
+				rgb = aspire_mao_webp_read_file(img_input, &width, &height, &pixel_bytes, 1);
+			else
+				rgb = aspire_mao_webp_read_file(img_input, &width, &height, &pixel_bytes, 0);
 		}
 		else
 		{
@@ -355,6 +372,20 @@ int main(int argc, char *argv[])
 			}
 			
 			if (aspire_mao_jpg_write_file(img_output, rgb, width, height, quality))
+			{
+				printf("write image file faild.\n");
+			}
+		}
+		else if (to_flag == to_webp)
+		{
+			//only webp need quality default 75
+			int quality = 75;
+			if (arg_quality != NULL)
+			{
+				quality = atoi(arg_quality);
+			}
+			
+			if (aspire_mao_webp_write_file(img_output, rgb, width, height, pixel_bytes, quality))
 			{
 				printf("write image file faild.\n");
 			}

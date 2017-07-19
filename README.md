@@ -37,3 +37,25 @@ Usage:
       -h [height] set height
       -r [rgb] rgba or rgb eg. ff00ff00, ff00ff
 ```
+
+## resize for jni
+
+```
+import com.aspirecn.hawaii.image
+
+/**
+ * resize image data (only PNG & JPG supported)
+ *
+ * @param imageBytes
+ *            input image data
+ * @param size
+ *            input resized size max height-width
+ * @param quality
+ *            quality (1-100) max 100 advice use 75 (JPG-only, PNG No
+ *            effect)
+ *
+ * @return output image data or null if error.
+ */
+
+public static native byte[] resize(byte[] imageBytes, int size, int quality);
+```

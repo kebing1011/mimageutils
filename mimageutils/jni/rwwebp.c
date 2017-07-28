@@ -129,7 +129,7 @@ unsigned char* aspire_mao_webp_read(const unsigned char* webp_data,
 		return WebPDecodeRGB(webp_data, webp_data_size, width, height);
 	}
 	
-	return WebPDecodeBGRA(webp_data, webp_data_size, width, height);
+	return WebPDecodeRGBA(webp_data, webp_data_size, width, height);
 }
 
 

@@ -1,8 +1,10 @@
-INCLUDE = -I /usr/local/include -I /usr/lib/jvm/java/include -I /usr/lib/jvm/java/include/linux
+JAVA_HOME = /usr/lib/jvm/java
+
+INCLUDE = -I /usr/local/include -I $(JAVA_HOME)/include -I $(JAVA_HOME)/include/linux
 LDFLAGS = -L /usr/local/lib
 LIBS    = -lpng -ljpeg
 OBJECTS = resize_jni.o resize.o rwjpg.o rwpng.o oprgb.o
-TARGET  = libimagetoolkit.so
+TARGET  = libimagetools.so
 CFLAGS  = -std=c99 -fPIC -shared
 
 $(TARGET) : $(OBJECTS)
@@ -20,4 +22,4 @@ resize.o : resize.c
 clean:
 	rm $(OBJECTS) $(TARGET)
 install:
-	install -p -m 0755 $(TARGET) /usr/lib64
+	install -p -m 0755 $(TARGET) /lib64

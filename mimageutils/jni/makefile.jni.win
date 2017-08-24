@@ -1,7 +1,7 @@
 INCLUDE = -I /c/MinGW/include -I "/c/Program Files/Java/jdk1.7.0_79/include" -I "/c/Program Files/Java/jdk1.7.0_79/include/win32"
 LIBS    = /c/MinGW/lib/libpng.a /c/MinGW/lib/libjpeg.a /c/MinGW/lib/libz.a
 OBJECTS = resize_jni.o resize.o rwjpg.o rwpng.o oprgb.o
-TARGET  = libimagetoolkit.dll
+TARGET  = libimagetools.dll
 CFLAGS  = -std=c99 -shared
 CC      = gcc
 

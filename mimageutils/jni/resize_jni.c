@@ -4,19 +4,19 @@
 #include <stdlib.h>
 #include "resize.h"
 
-/* Header for class com_mao_jpeg_Utils */
-//com.aspirecn.hawaii
-#ifndef _Included_com_aspire_mao_ImageToolKit
-#define _Included_com_aspire_mao_ImageToolKit
+/* Header for com_aspirecn_mao_ImageTools */
+
+#ifndef _Included_com_aspirecn_mao_ImageTools
+#define _Included_com_aspirecn_mao_ImageTools
 #ifdef __cplusplus
 extern "C" {
 #endif
 /*
- * Class:     com_mao_jpeg_Utils
- * Method:    resizeJPEG
+ * Class:     com_aspirecn_mao_ImageTools
+ * Method:    resize
  * Signature: ([BII)[B
  */
-JNIEXPORT jbyteArray JNICALL Java_com_aspirecn_hawaii_image_ImageToolKit_resize
+JNIEXPORT jbyteArray JNICALL Java_com_aspirecn_mao_ImageTools_resize
 (JNIEnv *env, jclass cls, jbyteArray array, jint size, jint quality) {
 	if ((array == NULL) || size == 0 || quality <= 0 || quality > 100)
 		return NULL;

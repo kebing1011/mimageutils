@@ -1,8 +1,9 @@
-INCLUDE = -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Headers
+JAVA_HOME = /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home
+INCLUDE = -I /usr/local/include -I $(JAVA_HOME)/include -I $(JAVA_HOME)/include/darwin
 LDFLAGS = -L /usr/local/lib
 LIBS    = -lpng -ljpeg
 OBJECTS = resize_jni.o resize.o rwjpg.o rwpng.o oprgb.o
-TARGET  = libimagetoolkit.jnilib
+TARGET  = libimagetools.jnilib
 CFLAGS  = -bundle -flat_namespace -undefined suppress -Wl,-no_pie
 
 $(TARGET) : $(OBJECTS)
@@ -20,5 +21,6 @@ resize.o : resize.c
 clean:
 	rm $(OBJECTS) $(TARGET)
 install:
-	install -d /Library/Java/Extensions
-	install -p -m 0755 $(TARGET) /Library/Java/Extensions
+	install -d $(HOME)/Library/Java/Extensions
+	install -p -m 0755 $(TARGET) $(HOME)/Library/Java/Extensions
+	

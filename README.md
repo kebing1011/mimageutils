@@ -41,7 +41,7 @@ Usage:
 ## resize for jni
 
 ```
-import com.aspirecn.hawaii.image
+import com.aspirecn.mao
 
 /**
  * resize image data (only PNG & JPG supported)

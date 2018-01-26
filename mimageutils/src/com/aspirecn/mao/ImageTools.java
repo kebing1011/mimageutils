@@ -84,9 +84,13 @@ public final class ImageTools {
 		writeFile("1-resized.jpg", resize(readFile("1.jpg"), 200, 75));
 		System.out.println("reszied jpg sucessed if nor error");
 
-		System.out.println("test resize jpg");
+		System.out.println("test resize png");
 		writeFile("1-resized.png", resize(readFile("1.png"), 200, 75));
 		System.out.println("reszied png sucessed if nor error");
+
+		System.out.println("test resize webp");
+		writeFile("1-resized.webp", resize(readFile("1.webp"), 200, 75));
+		System.out.println("reszied webp sucessed if nor error");
 	}
 
 }

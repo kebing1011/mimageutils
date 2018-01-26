@@ -1,0 +1,1 @@
+jar -cvfm imagetools.jar   mainconfig.txt com/aspirecn/mao/ImageTools.class

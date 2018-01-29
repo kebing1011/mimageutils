@@ -1,25 +1,30 @@
-JAVA_HOME = /usr/lib/jvm/java
+# ---------------------
+# imagetools make file
+# support jpeg png webp
+# verion 1.1
+# author maokebing
+# ---------------------
 
-INCLUDE = -I /usr/local/include -I $(JAVA_HOME)/include -I $(JAVA_HOME)/include/linux
-LDFLAGS = -L /usr/local/lib
-LIBS    = -lpng -ljpeg
-OBJECTS = resize_jni.o resize.o rwjpg.o rwpng.o oprgb.o
+#setup compiler
+CC = gcc
+INCLUDE = -I $(JAVA_HOME)/include -I $(JAVA_HOME)/include/linux
+LIBS    = -lpng -ljpeg -lwebp
+CFLAGS  = -O3 -fno-exceptions -std=c99 -fPIC -shared
+
+#library descption
+SOURCES = resize_jni.c resize.c rwjpg.c rwpng.c rwwebp.c oprgb.c
 TARGET  = libimagetools.so
-CFLAGS  = -std=c99 -fPIC -shared
 
-$(TARGET) : $(OBJECTS)
-	cc -o $(TARGET) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBS)
-resize_jni.o : resize_jni.c
-	cc -c resize_jni.c $(CFLAGS) $(INCLUDE)
-rwjpg.o : rwjpg.c
-	cc -c rwjpg.c $(CFLAGS) $(INCLUDE)
-rwpng.o : rwpng.c
-	cc -c rwpng.c $(CFLAGS) $(INCLUDE)
-oprgb.o : oprgb.c
-	cc -c oprgb.c $(CFLAGS) $(INCLUDE)
-resize.o : resize.c
-	cc -c resize.c $(CFLAGS) $(INCLUDE)		
+.PHONY: all
+
+$(TARGET) : $(SOURCES)
+	$(CC) -o $(TARGET) $(CFLAGS) $(INCLUDE) $(LIBS) $(SOURCES)
 clean:
 	rm $(OBJECTS) $(TARGET)
 install:
 	install -p -m 0755 $(TARGET) /lib64
+all: $(TARGET)
+
+test:
+	java -jar imagetools-1.1.jar	
+

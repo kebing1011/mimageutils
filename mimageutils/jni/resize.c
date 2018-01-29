@@ -9,6 +9,7 @@
 #include "resize.h"
 #include "rwjpg.h"
 #include "rwpng.h"
+#include "rwwebp.h"
 #include "oprgb.h"
 
 
@@ -43,6 +44,7 @@ unsigned char* aspire_mao_resize_image(unsigned int* dest_image_size,
 	int pixel_bytes = 3;
 	int is_png      = 0;
 	int is_jpg      = 0;
+	int is_webp     = 0;
 	unsigned char* rgb = NULL;
 	
 	//read image to rgb
@@ -56,7 +58,10 @@ unsigned char* aspire_mao_resize_image(unsigned int* dest_image_size,
 		is_png = 1;
 		rgb = aspire_mao_png_read(src_image_data, src_image_size, &width, &height, &pixel_bytes, 0);
 	}
-	else {
+	else if (aspire_mao_image_is_webp(src_image_data, src_image_size)){
+		is_webp = 1;
+		rgb = aspire_mao_webp_read(src_image_data, src_image_size, &width, &height, &pixel_bytes, 0);
+	}else {
 		return NULL;
 	}
 	
@@ -91,6 +96,8 @@ unsigned char* aspire_mao_resize_image(unsigned int* dest_image_size,
 	else if (is_png)
 	{
 		output = aspire_mao_png_write(dest_image_size, resize_rgb, dest_width, dest_height, pixel_bytes);
+	}else if (is_webp) {
+		output = aspire_mao_webp_write(dest_image_size, resize_rgb, dest_width, dest_height, pixel_bytes, quality);
 	}
 	
 	//free resize_rgb

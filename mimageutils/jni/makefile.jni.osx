@@ -1,15 +1,21 @@
-JAVA_HOME = /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home
+# ---------------------
+# imagetools make file
+# support jpeg png webp
+# verion 1.2
+# author maokebing
+# ---------------------
+
 INCLUDE = -I /usr/local/include -I $(JAVA_HOME)/include -I $(JAVA_HOME)/include/darwin
 LDFLAGS = -L /usr/local/lib
 LIBS    = -lpng -ljpeg
-OBJECTS = resize_jni.o resize.o rwjpg.o rwpng.o oprgb.o
+OBJECTS = tools_jni.o resize.o rwjpg.o rwpng.o oprgb.o
 TARGET  = libimagetools.jnilib
 CFLAGS  = -bundle -flat_namespace -undefined suppress -Wl,-no_pie
 
 $(TARGET) : $(OBJECTS)
 	cc -o $(TARGET) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBS)
 resize_jni.o : resize_jni.c
-	cc -c resize_jni.c $(INCLUDE)
+	cc -c tools_jni.c $(INCLUDE)
 rwjpg.o : rwjpg.c
 	cc -c rwjpg.c $(INCLUDE)
 rwpng.o : rwpng.c
@@ -23,4 +29,7 @@ clean:
 install:
 	install -d $(HOME)/Library/Java/Extensions
 	install -p -m 0755 $(TARGET) $(HOME)/Library/Java/Extensions
+
+test:
+	java -jar imagetools-1.2.jar	
 	

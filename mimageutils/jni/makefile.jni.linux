@@ -1,7 +1,7 @@
 # ---------------------
 # imagetools make file
 # support jpeg png webp
-# verion 1.1
+# verion 1.2
 # author maokebing
 # ---------------------
 
@@ -12,7 +12,7 @@ LIBS    = -lpng -ljpeg -lwebp
 CFLAGS  = -O3 -fno-exceptions -std=c99 -fPIC -shared
 
 #library descption
-SOURCES = resize_jni.c resize.c rwjpg.c rwpng.c rwwebp.c oprgb.c
+SOURCES = tools_jni.c resize.c rwjpg.c rwpng.c rwwebp.c oprgb.c
 TARGET  = libimagetools.so
 
 .PHONY: all
@@ -26,5 +26,5 @@ install:
 all: $(TARGET)
 
 test:
-	java -jar imagetools-1.1.jar	
+	java -jar imagetools-1.2.jar	
 

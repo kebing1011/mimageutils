@@ -1,10 +1,10 @@
 
 libimagetoolkit.so or jnilib
 Linux:
-gcc  -std=c99 -I /usr/local/inclue -I /usr/lib/jvm/java/include -I /usr/lib/jvm/java/include/linux -L /usr/local/lib -ljpeg -lpng -fPIC -shared -o libimagetoolkit.so rwjpg.c rwpng.c oprgb.c resize_jni.c
+gcc  -std=c99 -I /usr/local/inclue -I /usr/lib/jvm/java/include -I /usr/lib/jvm/java/include/linux -L /usr/local/lib -ljpeg -lpng -fPIC -shared -o libimagetoolkit.so rwjpg.c rwpng.c oprgb.c tools_jni.c
 
 MaxOS:
-gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libimagetoolkit.jnilib rwjpg.c rwpng.c oprgb.c resize_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
+gcc -I /usr/local/include -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Headers -bundle -flat_namespace -undefined suppress -o libimagetoolkit.jnilib rwjpg.c rwpng.c oprgb.c tools_jni.c -Wl,-no_pie /usr/local/lib/libjpeg.a /usr/local/Cellar/libpng/1.6.18/lib/libpng.a
 
 imgtl:
 MaxOS

@@ -4,7 +4,7 @@
  * 版本 1.0
  * 作者 Maokebing
  * 时间 2017.08.24
- * 描述 支持 JPG & PNG 格式图片缩放
+ * 描述 支持 JPG & PNG & WebP 格式图片缩放,转换
  * 
  */
 
@@ -20,7 +20,7 @@ public final class ImageTools {
 	}
 
 	/**
-	 * resize image data (only PNG & JPG supported)
+	 * resize image data (only PNG,JPG,WebP supported)
 	 *
 	 * @param bytes
 	 *            input image data
@@ -35,6 +35,20 @@ public final class ImageTools {
 
 	public static native byte[] resize(byte[] bytes, int size, int quality);
 
+
+	/**
+	 * convert image data from format WebP to JPG
+	 *
+	 * @param bytes
+	 *            input image data from WebP format
+	 * @param quality
+	 *            quality (1-100) max 100 advice use 75 (JPG-only, PNG No
+	 *            effect)
+	 *
+	 * @return output image data or null if error.
+	 */
+
+	public static native byte[] webp2jpg(byte[] bytes, int quality);
 
 
 	// only for test code
@@ -90,6 +104,10 @@ public final class ImageTools {
 
 		System.out.println("test resize webp");
 		writeFile("1-resized.webp", resize(readFile("1.webp"), 200, 75));
+		System.out.println("reszied webp sucessed if nor error");
+
+		System.out.println("test webp to jpg");
+		writeFile("w2j.jpg", webp2jpg(readFile("1.webp"), 75));
 		System.out.println("reszied webp sucessed if nor error");
 	}
 

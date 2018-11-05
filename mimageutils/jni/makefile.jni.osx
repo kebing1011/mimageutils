@@ -7,8 +7,8 @@
 
 INCLUDE = -I /usr/local/include -I $(JAVA_HOME)/include -I $(JAVA_HOME)/include/darwin
 LDFLAGS = -L /usr/local/lib
-LIBS    = -lpng -ljpeg
-OBJECTS = tools_jni.o resize.o rwjpg.o rwpng.o oprgb.o
+LIBS    = -lpng -ljpeg -lwebp
+OBJECTS = tools_jni.o resize.o rwjpg.o rwpng.o rwwebp.o oprgb.o
 TARGET  = libimagetools.jnilib
 CFLAGS  = -bundle -flat_namespace -undefined suppress -Wl,-no_pie
 

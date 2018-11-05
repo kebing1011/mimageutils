@@ -16,6 +16,14 @@ JNIEXPORT jbyteArray JNICALL Java_com_aspirecn_mao_ImageTools_resize
 (JNIEnv *, jclass, jbyteArray, jint, jint);
 
 
+/*
+ * Class:     com_aspirecn_mao_image_ImageTools
+ * Method:    webp2jpg
+ * Signature: ([BI)[B
+ */
+JNIEXPORT jbyteArray JNICALL Java_com_aspirecn_mao_image_ImageTools_webp2jpg
+(JNIEnv *, jclass, jbyteArray, jint);
+
 #ifdef __cplusplus
 }
 #endif

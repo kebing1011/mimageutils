@@ -12,7 +12,7 @@ LIBS    = -lpng -ljpeg -lwebp
 CFLAGS  = -O3 -fno-exceptions -std=c99 -fPIC -shared
 
 #library descption
-SOURCES = tools_jni.c resize.c rwjpg.c rwpng.c rwwebp.c oprgb.c
+SOURCES = tools_jni.c resize.c webp2jpg.c rwjpg.c rwpng.c rwwebp.c oprgb.c
 TARGET  = libimagetools.so
 
 .PHONY: all

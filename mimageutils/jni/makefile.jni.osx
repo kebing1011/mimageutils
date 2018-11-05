@@ -14,8 +14,10 @@ CFLAGS  = -bundle -flat_namespace -undefined suppress -Wl,-no_pie
 
 $(TARGET) : $(OBJECTS)
 	cc -o $(TARGET) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBS)
-resize_jni.o : resize_jni.c
+tools_jni.o : tools_jni.c
 	cc -c tools_jni.c $(INCLUDE)
+webp2jpg.o : webp2jpg.c
+	cc -c webp2jpg.c $(INCLUDE)
 rwjpg.o : rwjpg.c
 	cc -c rwjpg.c $(INCLUDE)
 rwpng.o : rwpng.c

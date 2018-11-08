@@ -1,0 +1,12 @@
+INCLUDE = -I /c/MinGW/include/
+LIBS    = /c/MinGW/lib/libpng.a /c/MinGW/lib/libjpeg.a /c/MinGW/lib/libz.a /c/MinGW/lib/libwebp.a
+SOURCES = imgtl.c rwjpg.c rwpng.c rwwebp.c oprgb.c
+TARGET  = imgtl.exe
+CC      = gcc
+
+$(TARGET) : $(OBJECTS)
+	$(CC) $(TARGET)  $(LIBS) $(SOURCES)
+clean:
+	rm $(TARGET)
+install:
+	install -p -m 0755 $(TARGET) /c/windows/system32

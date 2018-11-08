@@ -1,0 +1,26 @@
+JAVA_HOME = /c/Java/jdk1.7.0_80
+INCLUDE = -I /mingw/include -I $(JAVA_HOME)/include -I $(JAVA_HOME)/include/win32
+LIBS    = /mingw/lib/libpng.a /mingw/lib/libjpeg.a /mingw/lib/libz.a /mingw/lib/libwebp.a
+OBJECTS = resize_jni.o resize.o rwjpg.o rwpng.o rwwebp.o oprgb.o
+TARGET  = libimagetools.dll
+CFLAGS  = -std=c99 -shared -Wl,--add-stdcall-alias
+CC      = gcc
+
+$(TARGET) : $(OBJECTS)
+	$(CC) -o $(TARGET) $(CFLAGS) $(OBJECTS) $(LIBS)
+resize_jni.o : resize_jni.c
+	$(CC) -c resize_jni.c $(CFLAGS) $(INCLUDE)
+rwjpg.o : rwjpg.c
+	$(CC) -c rwjpg.c $(CFLAGS) $(INCLUDE)
+rwpng.o : rwpng.c
+	$(CC) -c rwpng.c $(CFLAGS) $(INCLUDE)
+rwwebp.o : rwwebp.c
+	$(CC) -c rwwebp.c $(CFLAGS) $(INCLUDE)
+oprgb.o : oprgb.c
+	$(CC) -c oprgb.c $(CFLAGS) $(INCLUDE)
+resize.o : resize.c
+	$(CC) -c resize.c $(CFLAGS) $(INCLUDE)	
+clean:
+	rm $(OBJECTS) $(TARGET)
+install:
+	install -p -m 0755 $(TARGET) /c/windows/
